@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Reviews - Home Sweet Home</title>
+  <title>Home Sweet Home - Real Estate Listings</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     /* General Styles */
@@ -14,10 +14,6 @@
       background-color: #f8f9fa;
       color: #333;
       line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
     }
 
     h1, h2, h3 {
@@ -43,7 +39,6 @@
     .navbar {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       padding: 10px 20px;
-      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -52,7 +47,7 @@
 
     .navbar h1 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: white;
     }
 
@@ -61,7 +56,7 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 15px;
+      gap: 20px;
     }
 
     .navbar ul li {
@@ -84,187 +79,168 @@
     header {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       color: #fff;
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
-      width: 100%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      font-weight: 600;
     }
 
     /* Main Content */
     .container {
-      max-width: 600px;
-      width: 90%;
+      max-width: 1200px;
       margin: 20px auto;
       padding: 20px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 0.5s ease-in-out;
-      text-align: center;
     }
 
-    /* Review Form */
-    .review-form {
-      margin-bottom: 20px;
+    /* Search Bar and Toggle */
+    .filters {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+      animation: slideIn 1s ease-in-out;
     }
 
-    .review-form h2 {
-      margin-top: 0;
-      color: #2c3e50;
-      font-size: 1.5rem;
-      text-align: center;
-    }
-
-    .review-form input,
-    .review-form textarea,
-    .review-form select {
+    .filters input,
+    .filters select,
+    .filters button {
       width: 100%;
-      padding: 8px;
-      margin: 8px 0;
+      max-width: 300px;
+      padding: 12px;
       border: 1px solid #ddd;
       border-radius: 8px;
-      font-size: 0.9rem;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-size: 1rem;
+      transition: all 0.3s ease;
     }
 
-    .review-form textarea {
-      height: 60px;
-      resize: vertical;
-    }
-
-    .review-form input:focus,
-    .review-form textarea:focus,
-    .review-form select:focus {
+    .filters input:focus,
+    .filters select:focus {
       border-color: #27ae60;
       outline: none;
       box-shadow: 0 0 8px rgba(39, 174, 96, 0.3);
     }
 
-    .review-form button {
+    .filters select {
+      appearance: none;
+      background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232c3e50'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e") no-repeat right 12px center;
+      background-color: #fff;
+      padding-right: 40px;
+    }
+
+    .filters button {
       background: #27ae60;
       color: #fff;
       border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
       cursor: pointer;
-      font-size: 0.9rem;
-      width: 100%;
-      margin: 8px 0;
+      font-weight: 600;
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    .review-form button:hover {
+    .filters button:hover {
       background: #2ecc71;
       transform: translateY(-2px);
     }
 
-    /* Review Cards */
-    .review-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    /* Property Listings */
+    .property-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      animation: fadeIn 1s ease-in-out;
     }
 
-    .review-card {
+    .property-card {
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 16px;
+      overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 0.5s ease-in-out;
     }
 
-    .review-card:hover {
+    .property-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
-    .review-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.1rem;
+    .property-card .image-container {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .property-card .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+
+    .property-card .image-container button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+
+    .property-card .image-container button:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .property-card .image-container button.prev {
+      left: 10px;
+    }
+
+    .property-card .image-container button.next {
+      right: 10px;
+    }
+
+    .property-card .details {
+      padding: 20px;
+    }
+
+    .property-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
       color: #2c3e50;
     }
 
-    .review-card p {
+    .property-card p {
       margin: 5px 0;
       color: #666;
-      font-size: 0.9rem;
     }
 
-    .review-card .rating {
-      color: #f1c40f;
+    .property-card .price {
+      color: #27ae60;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
-    /* Hidden Admin Login Button */
-    .hidden-button {
-      display: none;
-      background: #3498db;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      margin-top: 20px;
-      transition: background 0.3s ease;
-    }
-
-    .hidden-button:hover {
-      background: #2980b9;
-    }
-
-    /* Hidden Password Input */
-    .hidden-form {
-      display: none;
-      margin-top: 20px;
-    }
-
-    .hidden-form input {
-      padding: 8px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 0.9rem;
-    }
-
-    .hidden-form button {
-      background: #27ae60;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      margin-left: 10px;
-      transition: background 0.3s ease;
-    }
-
-    .hidden-form button:hover {
-      background: #2ecc71;
-    }
-
-    /* Delete Button */
-    .delete-button {
-      display: none;
-      background: #e74c3c;
-      color: white;
-      border: none;
+    .property-card .type {
+      color: #2c3e50;
+      font-weight: bold;
+      background: #f4f4f9;
       padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      margin-top: 10px;
-      transition: background 0.3s ease;
-    }
-
-    .delete-button:hover {
-      background: #c0392b;
+      border-radius: 8px;
+      display: inline-block;
     }
 
     /* Footer */
@@ -273,8 +249,7 @@
       color: #fff;
       text-align: center;
       padding: 20px;
-      width: 100%;
-      margin-top: auto;
+      margin-top: 40px;
       box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
     }
 
@@ -294,8 +269,34 @@
 
     /* Animations */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (min-width: 600px) {
+      .filters {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .filters input,
+      .filters select,
+      .filters button {
+        width: auto;
+        max-width: 200px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .property-list {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
     }
   </style>
 </head>
@@ -304,152 +305,165 @@
   <div class="navbar">
     <h1>Home Sweet Home</h1>
     <ul>
-      <li><a href="index.html">Home</a></li>
+      <li><a href="indexsite.html">Home</a></li>
       <li><a href="reviews.html">Reviews</a></li>
     </ul>
   </div>
 
-  <!-- Header -->
-  <header>
-    <h1>Customer Reviews</h1>
-  </header>
-
-  <!-- Main Content -->
-  <div class="container">
-    <!-- Review Form -->
-    <div class="review-form">
-      <h2>Add Your Review</h2>
-      <form id="reviewForm">
-        <input type="text" id="reviewerName" placeholder="Your Name" required>
-        <textarea id="reviewText" placeholder="Write your review..." rows="2" required></textarea>
-        <select id="reviewRating" required>
-          <option value="" disabled selected>Select Rating</option>
-          <option value="5">★★★★★</option>
-          <option value="4">★★★★☆</option>
-          <option value="3">★★★☆☆</option>
-          <option value="2">★★☆☆☆</option>
-          <option value="1">★☆☆☆☆</option>
+  <!-- Main Page -->
+  <div class="main-page" id="mainPage">
+    <header>
+      <h1>Find Your Dream Home</h1>
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Search by location or price...">
+        <select id="typeFilter">
+          <option value="all">All</option>
+          <option value="rent">For Rent</option>
+          <option value="buy">For Buy</option>
         </select>
-        <button type="submit">Submit Review</button>
-      </form>
+        <button onclick="searchProperties()">Search</button>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Property Listings -->
+      <div class="property-list" id="propertyList">
+        <!-- Property cards will be dynamically added here -->
+      </div>
     </div>
 
-    <!-- Review List -->
-    <div class="review-list" id="reviewList">
-      <!-- Reviews will be dynamically added here -->
-    </div>
-
-    <!-- Hidden Admin Login Button -->
-    <button id="adminLoginButton" class="hidden-button">Admin Login</button>
-
-    <!-- Hidden Password Input -->
-    <div id="adminLoginForm" class="hidden-form">
-      <input type="password" id="adminPassword" placeholder="Enter Admin Password">
-      <button onclick="enableAdminMode()">Login</button>
-    </div>
-
-    <!-- Clear Local Storage Button (Hidden) -->
-    <button id="clearStorageButton" class="hidden-button" onclick="clearLocalStorage()">Clear All Reviews (Local Storage)</button>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2023 Home Sweet Home. All rights reserved.</p>
+      <p>Email: <a href="mailto:info@homesweethome.com">info@homesweethome.com</a></p>
+      <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+    </footer>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2023 Home Sweet Home. All rights reserved.</p>
-    <p>Email: <a href="mailto:info@homesweethome.com">info@homesweethome.com</a></p>
-    <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
-  </footer>
-
   <script>
-    // Array to store reviews
-    let reviews = [];
-
-    // Admin password (for simplicity, hardcoded here)
-    const ADMIN_PASSWORD = "admin123"; // Change this to a secure password
-
-    // Flag to track admin mode
-    let isAdminMode = false;
-
-    // Function to load reviews from localStorage
-    function loadReviews() {
-      const storedReviews = localStorage.getItem('reviews');
-      if (storedReviews) {
-        reviews = JSON.parse(storedReviews);
+    // Sample Data with working images
+    let properties = [
+      {
+        title: "Modern Apartment in Downtown",
+        description: "A spacious 3-bedroom apartment with stunning city views.",
+        price: 250000,
+        location: "New York, NY",
+        type: "buy",
+        images: [
+          "https://source.unsplash.com/400x200/?apartment",
+          "https://source.unsplash.com/400x200/?city",
+          "https://source.unsplash.com/400x200/?skyscraper"
+        ]
+      },
+      {
+        title: "Cozy Suburban House",
+        description: "A charming 4-bedroom house with a large backyard.",
+        price: 350000,
+        location: "Austin, TX",
+        type: "buy",
+        images: [
+          "https://source.unsplash.com/400x200/?house",
+          "https://source.unsplash.com/400x200/?suburb",
+          "https://source.unsplash.com/400x200/?garden"
+        ]
+      },
+      {
+        title: "Luxury Condo with Ocean View",
+        description: "A luxurious 2-bedroom condo with breathtaking ocean views.",
+        price: 5000,
+        location: "Miami, FL",
+        type: "rent",
+        images: [
+          "https://source.unsplash.com/400x200/?condo",
+          "https://source.unsplash.com/400x200/?ocean",
+          "https://source.unsplash.com/400x200/?luxury"
+        ]
+      },
+      {
+        title: "Rustic Cabin in the Woods",
+        description: "A cozy 1-bedroom cabin surrounded by nature.",
+        price: 150000,
+        location: "Denver, CO",
+        type: "buy",
+        images: [
+          "https://source.unsplash.com/400x200/?cabin",
+          "https://source.unsplash.com/400x200/?woods",
+          "https://source.unsplash.com/400x200/?nature"
+        ]
       }
-    }
+    ];
 
-    // Function to save reviews to localStorage
-    function saveReviews() {
-      localStorage.setItem('reviews', JSON.stringify(reviews));
-    }
+    // Function to display properties
+    function displayProperties(filteredProperties = properties) {
+      const propertyList = document.getElementById('propertyList');
+      propertyList.innerHTML = ''; // Clear existing content
 
-    // Function to display reviews
-    function displayReviews() {
-      const reviewList = document.getElementById('reviewList');
-      reviewList.innerHTML = ''; // Clear existing content
+      filteredProperties.forEach((property, index) => {
+        const propertyCard = document.createElement('div');
+        propertyCard.className = 'property-card';
 
-      reviews.forEach((review, index) => {
-        const reviewCard = document.createElement('div');
-        reviewCard.className = 'review-card';
-        reviewCard.innerHTML = `
-          <h3>${review.name}</h3>
-          <p class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</p>
-          <p>"${review.text}"</p>
-          ${isAdminMode ? '<button class="delete-button" onclick="deleteReview(' + index + ')">Delete</button>' : ''}
+        // Image Toggle
+        let currentImageIndex = 0;
+        const imageContainer = document.createElement('div');
+        imageContainer.className = 'image-container';
+
+        const propertyImage = document.createElement('img');
+        propertyImage.src = property.images[currentImageIndex];
+        imageContainer.appendChild(propertyImage);
+
+        const prevButton = document.createElement('button');
+        prevButton.className = 'prev';
+        prevButton.textContent = '◀';
+        prevButton.onclick = () => {
+          currentImageIndex = (currentImageIndex - 1 + property.images.length) % property.images.length;
+          propertyImage.src = property.images[currentImageIndex];
+        };
+
+        const nextButton = document.createElement('button');
+        nextButton.className = 'next';
+        nextButton.textContent = '▶';
+        nextButton.onclick = () => {
+          currentImageIndex = (currentImageIndex + 1) % property.images.length;
+          propertyImage.src = property.images[currentImageIndex];
+        };
+
+        imageContainer.appendChild(prevButton);
+        imageContainer.appendChild(nextButton);
+
+        // Property Details
+        const details = document.createElement('div');
+        details.className = 'details';
+        details.innerHTML = `
+          <h3>${property.title}</h3>
+          <p>${property.description}</p>
+          <p class="price">$${property.price.toLocaleString()}</p>
+          <p>Location: ${property.location}</p>
+          <p class="type">${property.type === 'rent' ? 'For Rent' : 'For Buy'}</p>
         `;
-        reviewList.appendChild(reviewCard);
+
+        propertyCard.appendChild(imageContainer);
+        propertyCard.appendChild(details);
+        propertyList.appendChild(propertyCard);
       });
     }
 
-    // Function to delete a review
-    function deleteReview(index) {
-      reviews.splice(index, 1); // Remove the review from the array
-      saveReviews(); // Save the updated reviews to localStorage
-      displayReviews(); // Refresh the displayed reviews
+    // Function to search and filter properties
+    function searchProperties() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const typeFilter = document.getElementById('typeFilter').value;
+
+      const filteredProperties = properties.filter(property => {
+        const matchesSearch = property.location.toLowerCase().includes(searchTerm) ||
+          property.price.toString().includes(searchTerm);
+        const matchesType = typeFilter === 'all' || property.type === typeFilter;
+        return matchesSearch && matchesType;
+      });
+
+      displayProperties(filteredProperties);
     }
 
-    // Function to enable admin mode
-    function enableAdminMode() {
-      const password = document.getElementById('adminPassword').value;
-      if (password === ADMIN_PASSWORD) {
-        isAdminMode = true;
-        alert("Admin mode enabled. You can now delete reviews.");
-        displayReviews(); // Refresh to show delete buttons
-        document.getElementById('adminLoginForm').style.display = 'none'; // Hide the login form
-        document.getElementById('clearStorageButton').style.display = 'block'; // Show the clear storage button
-      } else {
-        alert("Incorrect password. Access denied.");
-      }
-    }
-
-    // Function to clear local storage
-    function clearLocalStorage() {
-      localStorage.removeItem('reviews'); // Clear reviews from localStorage
-      reviews = []; // Clear the reviews array
-      displayReviews(); // Refresh the displayed reviews
-      alert("Local storage cleared. All reviews have been removed.");
-    }
-
-    // Function to toggle admin login form visibility
-    function toggleAdminLogin() {
-      const adminLoginForm = document.getElementById('adminLoginForm');
-      adminLoginForm.style.display = adminLoginForm.style.display === 'none' ? 'block' : 'none';
-    }
-
-    // Add event listener for key combination (Ctrl + Shift + D)
-    document.addEventListener('keydown', (event) => {
-      if (event.ctrlKey && event.shiftKey && event.key === 'D') {
-        toggleAdminLogin();
-      }
-    });
-
-    // Add event listener for admin login button
-    document.getElementById('adminLoginButton').addEventListener('click', toggleAdminLogin);
-
-    // Load reviews from localStorage when the page loads
-    loadReviews();
-
-    // Initial display of reviews (if any)
-    displayReviews();
+    // Initial state: Display properties
+    displayProperties();
   </script>
 </body>
 </html>
