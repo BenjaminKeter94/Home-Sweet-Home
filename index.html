@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Reviews - Home Sweet Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 {
+      color: white;
+      font-weight: 600;
+    }
+
+    p {
+      color: #666;
+    }
+
+    a {
+      color: #27ae60;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      padding: 10px 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+
+    .navbar ul li {
+      display: inline;
+    }
+
+    .navbar ul li a {
+      color: white;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .navbar ul li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 600px;
+      width: 90%;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.5s ease-in-out;
+      text-align: center;
+    }
+
+    /* Review Form */
+    .review-form {
+      margin-bottom: 20px;
+    }
+
+    .review-form h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .review-form input,
+    .review-form textarea,
+    .review-form select {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .review-form textarea {
+      height: 60px;
+      resize: vertical;
+    }
+
+    .review-form input:focus,
+    .review-form textarea:focus,
+    .review-form select:focus {
+      border-color: #27ae60;
+      outline: none;
+      box-shadow: 0 0 8px rgba(39, 174, 96, 0.3);
+    }
+
+    .review-form button {
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      width: 100%;
+      margin: 8px 0;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .review-form button:hover {
+      background: #2ecc71;
+      transform: translateY(-2px);
+    }
+
+    /* Review Cards */
+    .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .review-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .review-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: #2c3e50;
+    }
+
+    .review-card p {
+      margin: 5px 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .review-card .rating {
+      color: #f1c40f;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    /* Hidden Admin Login Button */
+    .hidden-button {
+      display: none;
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .hidden-button:hover {
+      background: #2980b9;
+    }
+
+    /* Hidden Password Input */
+    .hidden-form {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .hidden-form input {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .hidden-form button {
+      background: #27ae60;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-left: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .hidden-form button:hover {
+      background: #2ecc71;
+    }
+
+    /* Delete Button */
+    .delete-button {
+      display: none;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .delete-button:hover {
+      background: #c0392b;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      margin-top: auto;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer a {
+      color: #27ae60;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>Home Sweet Home</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+    </ul>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>Customer Reviews</h1>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Review Form -->
+    <div class="review-form">
+      <h2>Add Your Review</h2>
+      <form id="reviewForm">
+        <input type="text" id="reviewerName" placeholder="Your Name" required>
+        <textarea id="reviewText" placeholder="Write your review..." rows="2" required></textarea>
+        <select id="reviewRating" required>
+          <option value="" disabled selected>Select Rating</option>
+          <option value="5">★★★★★</option>
+          <option value="4">★★★★☆</option>
+          <option value="3">★★★☆☆</option>
+          <option value="2">★★☆☆☆</option>
+          <option value="1">★☆☆☆☆</option>
+        </select>
+        <button type="submit">Submit Review</button>
+      </form>
+    </div>
+
+    <!-- Review List -->
+    <div class="review-list" id="reviewList">
+      <!-- Reviews will be dynamically added here -->
+    </div>
+
+    <!-- Hidden Admin Login Button -->
+    <button id="adminLoginButton" class="hidden-button">Admin Login</button>
+
+    <!-- Hidden Password Input -->
+    <div id="adminLoginForm" class="hidden-form">
+      <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+      <button onclick="enableAdminMode()">Login</button>
+    </div>
+
+    <!-- Clear Local Storage Button (Hidden) -->
+    <button id="clearStorageButton" class="hidden-button" onclick="clearLocalStorage()">Clear All Reviews (Local Storage)</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Home Sweet Home. All rights reserved.</p>
+    <p>Email: <a href="mailto:info@homesweethome.com">info@homesweethome.com</a></p>
+    <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+  </footer>
+
+  <script>
+    // Array to store reviews
+    let reviews = [];
+
+    // Admin password (for simplicity, hardcoded here)
+    const ADMIN_PASSWORD = "admin123"; // Change this to a secure password
+
+    // Flag to track admin mode
+    let isAdminMode = false;
+
+    // Function to load reviews from localStorage
+    function loadReviews() {
+      const storedReviews = localStorage.getItem('reviews');
+      if (storedReviews) {
+        reviews = JSON.parse(storedReviews);
+      }
+    }
+
+    // Function to save reviews to localStorage
+    function saveReviews() {
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+    }
+
+    // Function to display reviews
+    function displayReviews() {
+      const reviewList = document.getElementById('reviewList');
+      reviewList.innerHTML = ''; // Clear existing content
+
+      reviews.forEach((review, index) => {
+        const reviewCard = document.createElement('div');
+        reviewCard.className = 'review-card';
+        reviewCard.innerHTML = `
+          <h3>${review.name}</h3>
+          <p class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</p>
+          <p>"${review.text}"</p>
+          ${isAdminMode ? '<button class="delete-button" onclick="deleteReview(' + index + ')">Delete</button>' : ''}
+        `;
+        reviewList.appendChild(reviewCard);
+      });
+    }
+
+    // Function to delete a review
+    function deleteReview(index) {
+      reviews.splice(index, 1); // Remove the review from the array
+      saveReviews(); // Save the updated reviews to localStorage
+      displayReviews(); // Refresh the displayed reviews
+    }
+
+    // Function to enable admin mode
+    function enableAdminMode() {
+      const password = document.getElementById('adminPassword').value;
+      if (password === ADMIN_PASSWORD) {
+        isAdminMode = true;
+        alert("Admin mode enabled. You can now delete reviews.");
+        displayReviews(); // Refresh to show delete buttons
+        document.getElementById('adminLoginForm').style.display = 'none'; // Hide the login form
+        document.getElementById('clearStorageButton').style.display = 'block'; // Show the clear storage button
+      } else {
+        alert("Incorrect password. Access denied.");
+      }
+    }
+
+    // Function to clear local storage
+    function clearLocalStorage() {
+      localStorage.removeItem('reviews'); // Clear reviews from localStorage
+      reviews = []; // Clear the reviews array
+      displayReviews(); // Refresh the displayed reviews
+      alert("Local storage cleared. All reviews have been removed.");
+    }
+
+    // Function to toggle admin login form visibility
+    function toggleAdminLogin() {
+      const adminLoginForm = document.getElementById('adminLoginForm');
+      adminLoginForm.style.display = adminLoginForm.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Add event listener for key combination (Ctrl + Shift + D)
+    document.addEventListener('keydown', (event) => {
+      if (event.ctrlKey && event.shiftKey && event.key === 'D') {
+        toggleAdminLogin();
+      }
+    });
+
+    // Add event listener for admin login button
+    document.getElementById('adminLoginButton').addEventListener('click', toggleAdminLogin);
+
+    // Load reviews from localStorage when the page loads
+    loadReviews();
+
+    // Initial display of reviews (if any)
+    displayReviews();
+  </script>
+</body>
+</html>
