@@ -486,9 +486,9 @@
         bedrooms: 3,
         bathrooms: 2,
         images: [
-          "https://source.unsplash.com/400x200/?apartment",
-          "https://source.unsplash.com/400x200/?city",
-          "https://source.unsplash.com/400x200/?skyscraper"
+          "https://source.unsplash.com/800x600/?modern-apartment",
+          "https://source.unsplash.com/800x600/?city-view-apartment",
+          "https://source.unsplash.com/800x600/?apartment-kitchen"
         ]
       },
       {
@@ -500,9 +500,9 @@
         bedrooms: 4,
         bathrooms: 3,
         images: [
-          "https://source.unsplash.com/400x200/?house",
-          "https://source.unsplash.com/400x200/?suburb",
-          "https://source.unsplash.com/400x200/?garden"
+          "https://source.unsplash.com/800x600/?house",
+          "https://source.unsplash.com/800x600/?suburb",
+          "https://source.unsplash.com/800x600/?garden"
         ]
       },
       {
@@ -514,9 +514,9 @@
         bedrooms: 2,
         bathrooms: 2,
         images: [
-          "https://source.unsplash.com/400x200/?condo",
-          "https://source.unsplash.com/400x200/?ocean",
-          "https://source.unsplash.com/400x200/?luxury"
+          "https://source.unsplash.com/800x600/?condo",
+          "https://source.unsplash.com/800x600/?ocean",
+          "https://source.unsplash.com/800x600/?luxury"
         ]
       },
       {
@@ -528,9 +528,9 @@
         bedrooms: 1,
         bathrooms: 1,
         images: [
-          "https://source.unsplash.com/400x200/?cabin",
-          "https://source.unsplash.com/400x200/?woods",
-          "https://source.unsplash.com/400x200/?nature"
+          "https://source.unsplash.com/800x600/?cabin",
+          "https://source.unsplash.com/800x600/?woods",
+          "https://source.unsplash.com/800x600/?nature"
         ]
       }
     ];
@@ -575,12 +575,11 @@
         imageContainer.appendChild(prevButton);
         imageContainer.appendChild(nextButton);
 
-        // Property Details
+        // Property Details (without description)
         const details = document.createElement('div');
         details.className = 'details';
         details.innerHTML = `
           <h3>${property.title}</h3>
-          <p>${property.description}</p>
           <p class="price">$${property.price.toLocaleString()}</p>
           <p>Location: ${property.location}</p>
           <p class="type">${property.type === 'rent' ? 'For Rent' : 'For Buy'}</p>
