@@ -161,6 +161,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
 
     .property-card:hover {
@@ -235,6 +236,118 @@
     }
 
     .property-card .type {
+      color: #2c3e50;
+      font-weight: bold;
+      background: #f4f4f9;
+      padding: 5px 10px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .modal-close:hover {
+      color: #27ae60;
+    }
+
+    .modal-image-container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .modal-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-image-container button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+
+    .modal-image-container button:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-image-container button.prev {
+      left: 10px;
+    }
+
+    .modal-image-container button.next {
+      right: 10px;
+    }
+
+    .modal-details {
+      padding: 20px;
+    }
+
+    .modal-details h2 {
+      margin: 0 0 10px;
+      font-size: 1.8rem;
+      color: #2c3e50;
+    }
+
+    .modal-details p {
+      margin: 5px 0;
+      color: #666;
+    }
+
+    .modal-details .price {
+      color: #27ae60;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .modal-details .type {
       color: #2c3e50;
       font-weight: bold;
       background: #f4f4f9;
@@ -340,6 +453,27 @@
     </footer>
   </div>
 
+  <!-- Modal -->
+  <div id="propertyModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <div class="modal-image-container">
+        <img id="modalImage" src="" alt="Property Image">
+        <button class="prev" onclick="changeModalImage(-1)">◀</button>
+        <button class="next" onclick="changeModalImage(1)">▶</button>
+      </div>
+      <div class="modal-details">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <p class="price" id="modalPrice"></p>
+        <p id="modalLocation"></p>
+        <p id="modalType"></p>
+        <p id="modalBedrooms"></p>
+        <p id="modalBathrooms"></p>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Sample Data with working images
     let properties = [
@@ -349,6 +483,8 @@
         price: 250000,
         location: "New York, NY",
         type: "buy",
+        bedrooms: 3,
+        bathrooms: 2,
         images: [
           "https://source.unsplash.com/400x200/?apartment",
           "https://source.unsplash.com/400x200/?city",
@@ -361,6 +497,8 @@
         price: 350000,
         location: "Austin, TX",
         type: "buy",
+        bedrooms: 4,
+        bathrooms: 3,
         images: [
           "https://source.unsplash.com/400x200/?house",
           "https://source.unsplash.com/400x200/?suburb",
@@ -373,6 +511,8 @@
         price: 5000,
         location: "Miami, FL",
         type: "rent",
+        bedrooms: 2,
+        bathrooms: 2,
         images: [
           "https://source.unsplash.com/400x200/?condo",
           "https://source.unsplash.com/400x200/?ocean",
@@ -385,6 +525,8 @@
         price: 150000,
         location: "Denver, CO",
         type: "buy",
+        bedrooms: 1,
+        bathrooms: 1,
         images: [
           "https://source.unsplash.com/400x200/?cabin",
           "https://source.unsplash.com/400x200/?woods",
@@ -401,6 +543,7 @@
       filteredProperties.forEach((property, index) => {
         const propertyCard = document.createElement('div');
         propertyCard.className = 'property-card';
+        propertyCard.onclick = () => openModal(property);
 
         // Image Toggle
         let currentImageIndex = 0;
@@ -414,7 +557,8 @@
         const prevButton = document.createElement('button');
         prevButton.className = 'prev';
         prevButton.textContent = '◀';
-        prevButton.onclick = () => {
+        prevButton.onclick = (e) => {
+          e.stopPropagation(); // Prevent the modal from opening
           currentImageIndex = (currentImageIndex - 1 + property.images.length) % property.images.length;
           propertyImage.src = property.images[currentImageIndex];
         };
@@ -422,7 +566,8 @@
         const nextButton = document.createElement('button');
         nextButton.className = 'next';
         nextButton.textContent = '▶';
-        nextButton.onclick = () => {
+        nextButton.onclick = (e) => {
+          e.stopPropagation(); // Prevent the modal from opening
           currentImageIndex = (currentImageIndex + 1) % property.images.length;
           propertyImage.src = property.images[currentImageIndex];
         };
@@ -460,6 +605,46 @@
       });
 
       displayProperties(filteredProperties);
+    }
+
+    // Modal Functions
+    let currentModalProperty = null;
+    let currentModalImageIndex = 0;
+
+    function openModal(property) {
+      currentModalProperty = property;
+      currentModalImageIndex = 0;
+
+      const modal = document.getElementById('propertyModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalPrice = document.getElementById('modalPrice');
+      const modalLocation = document.getElementById('modalLocation');
+      const modalType = document.getElementById('modalType');
+      const modalBedrooms = document.getElementById('modalBedrooms');
+      const modalBathrooms = document.getElementById('modalBathrooms');
+      const modalImage = document.getElementById('modalImage');
+
+      modalTitle.textContent = property.title;
+      modalDescription.textContent = property.description;
+      modalPrice.textContent = `Price: $${property.price.toLocaleString()}`;
+      modalLocation.textContent = `Location: ${property.location}`;
+      modalType.textContent = `Type: ${property.type === 'rent' ? 'For Rent' : 'For Buy'}`;
+      modalBedrooms.textContent = `Bedrooms: ${property.bedrooms}`;
+      modalBathrooms.textContent = `Bathrooms: ${property.bathrooms}`;
+      modalImage.src = property.images[currentModalImageIndex];
+
+      modal.style.display = 'flex';
+    }
+
+    function changeModalImage(direction) {
+      currentModalImageIndex = (currentModalImageIndex + direction + currentModalProperty.images.length) % currentModalProperty.images.length;
+      document.getElementById('modalImage').src = currentModalProperty.images[currentModalImageIndex];
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('propertyModal');
+      modal.style.display = 'none';
     }
 
     // Initial state: Display properties
