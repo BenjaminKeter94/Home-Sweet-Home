@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Sweet Home - Real Estate Listings</title>
+  <title>Home Sweet Home - Listagens de Imóveis</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* General Styles */
+    /* Estilos Gerais */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -35,7 +35,7 @@
       text-decoration: underline;
     }
 
-    /* Navigation Bar */
+    /* Barra de Navegação */
     .navbar {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       padding: 10px 20px;
@@ -75,7 +75,7 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* Header */
+    /* Cabeçalho */
     header {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       color: #fff;
@@ -90,14 +90,14 @@
       font-weight: 600;
     }
 
-    /* Main Content */
+    /* Conteúdo Principal */
     .container {
       max-width: 1200px;
       margin: 20px auto;
       padding: 20px;
     }
 
-    /* Search Bar and Toggle */
+    /* Barra de Pesquisa e Filtros */
     .filters {
       display: flex;
       flex-direction: column;
@@ -147,7 +147,7 @@
       transform: translateY(-2px);
     }
 
-    /* Property Listings */
+    /* Listagens de Imóveis */
     .property-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -244,7 +244,7 @@
       display: inline-block;
     }
 
-    /* Modal Styles */
+    /* Estilos do Modal */
     .modal {
       display: none;
       position: fixed;
@@ -275,17 +275,17 @@
       top: 15px;
       right: 15px;
       cursor: pointer;
-      font-size: 2rem; /* Increased size for better visibility */
+      font-size: 2rem;
       color: #333;
       background: rgba(255, 255, 255, 0.8);
       border-radius: 50%;
-      width: 50px; /* Increased size for better tap targets */
+      width: 50px;
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: background 0.3s ease;
-      z-index: 1001; /* Ensure it's above other content */
+      z-index: 1001;
     }
 
     .modal-close:hover {
@@ -384,7 +384,7 @@
       background: #2ecc71;
     }
 
-    /* Footer */
+    /* Rodapé */
     footer {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       color: #fff;
@@ -408,7 +408,7 @@
       text-decoration: underline;
     }
 
-    /* Animations */
+    /* Animações */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -419,7 +419,7 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* Media Queries for Responsiveness */
+    /* Consultas de Mídia para Responsividade */
     @media (min-width: 600px) {
       .filters {
         flex-direction: row;
@@ -442,42 +442,45 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Barra de Navegação -->
   <div class="navbar">
     <h1>Home Sweet Home</h1>
     <ul>
-      <li><a href="indexsite.html">Home</a></li>
-      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="avaliacoes.html">Avaliações</a></li>
     </ul>
   </div>
 
-  <!-- Main Page -->
+  <!-- Página Principal -->
   <div class="main-page" id="mainPage">
     <header>
-      <h1>Find Your Dream Home</h1>
+      <h1>Encontre a Casa dos Seus Sonhos</h1>
       <div class="filters">
-        <input type="text" id="searchInput" placeholder="Search by location or price...">
+        <input type="text" id="searchInput" placeholder="Pesquisar">
         <select id="typeFilter">
-          <option value="all">All</option>
-          <option value="rent">For Rent</option>
-          <option value="buy">For Buy</option>
+          <option value="all">Todos</option>
+          <option value="rent">Para Alugar</option>
+          <option value="buy">Para Comprar</option>
         </select>
-        <button onclick="searchProperties()">Search</button>
+        <button onclick="searchProperties()">Pesquisar</button>
       </div>
     </header>
 
     <div class="container">
-      <!-- Property Listings -->
+      <!-- Listagens de Imóveis -->
       <div class="property-list" id="propertyList">
-        <!-- Property cards will be dynamically added here -->
+        <!-- Os cartões de imóveis serão adicionados dinamicamente aqui -->
       </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Rodapé -->
     <footer>
-      <p>&copy; 2023 Home Sweet Home. All rights reserved.</p>
-      <p>Email: <a href="mailto:info@homesweethome.com">info@homesweethome.com</a></p>
-      <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+      <p>&copy; 2023 Home Sweet Home. Todos os direitos reservados.</p>
+      <p>Email: <a href="mailto:hshpropriedades@gmail.com">hshpropriedades@gmail.com</a></p>
+      <p>Tlf: <a href="tel:+351281012174">+351 281 012 174</a></p>
+      <p>Tlm: <a href="tel:+351927860439">+351 927 860 439</a></p>
+      <p>Local: <a href="https://www.google.pt/maps/place/R.+%C3%81lvaro+de+Campos+42c,+8800-320+Tavira,+Portugal/@37.1320877,-7.6472447,17z/data=!3m1!4b1!4m6!3m5!1s0xd10037c5d621ee3:0xe66e835ee2cc5607!8m2!3d37.1320877!4d-7.6472447!16s%2Fg%2F11rptgxbww?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">Rua Alvaro de Campos, 42 C, 8800 - 320 Tavira</a></p>
+
     </footer>
   </div>
 
@@ -486,7 +489,7 @@
     <div class="modal-content">
       <span class="modal-close" onclick="closeModal()">&times;</span>
       <div class="modal-image-container">
-        <img id="modalImage" src="" alt="Property Image">
+        <img id="modalImage" src="" alt="Imagem do Imóvel">
         <button class="prev" onclick="changeModalImage(-1)">◀</button>
         <button class="next" onclick="changeModalImage(1)">▶</button>
       </div>
@@ -498,20 +501,19 @@
         <p id="modalType"></p>
         <p id="modalBedrooms"></p>
         <p id="modalBathrooms"></p>
-        <!-- Add a close button inside the modal content -->
-        <button class="modal-close-button" onclick="closeModal()">Close</button>
+        <button class="modal-close-button" onclick="closeModal()">Fechar</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Sample Data with working images
+    // Dados de Exemplo com Imagens Funcionais
     let properties = [
       {
-        title: "Modern Apartment in Downtown",
-        description: "A spacious 3-bedroom apartment with stunning city views.",
+        title: "Apartamento Moderno no Centro",
+        description: "Um apartamento espaçoso com 3 quartos e vistas deslumbrantes para a cidade.",
         price: 250000,
-        location: "New York, NY",
+        location: "Lisboa, Portugal",
         type: "buy",
         bedrooms: 3,
         bathrooms: 2,
@@ -522,10 +524,10 @@
         ]
       },
       {
-        title: "Cozy Suburban House",
-        description: "A charming 4-bedroom house with a large backyard.",
+        title: "Casa Acolhedora nos Subúrbios",
+        description: "Uma casa charmosa com 4 quartos e um grande quintal.",
         price: 350000,
-        location: "Austin, TX",
+        location: "Porto, Portugal",
         type: "buy",
         bedrooms: 4,
         bathrooms: 3,
@@ -536,46 +538,46 @@
         ]
       },
       {
-        title: "Luxury Condo with Ocean View",
-        description: "A luxurious 2-bedroom condo with breathtaking ocean views.",
+        title: "Condo de Luxo com Vista para o Mar",
+        description: "Um condomínio luxuoso com 2 quartos e vistas deslumbrantes para o oceano.",
         price: 5000,
-        location: "Miami, FL",
+        location: "Algarve, Portugal",
         type: "rent",
         bedrooms: 2,
         bathrooms: 2,
         images: [
-          "https://source.unsplash.com/800x600/?condo",
-          "https://source.unsplash.com/800x600/?ocean",
-          "https://source.unsplash.com/800x600/?luxury"
+          "https://source.unsplash.com/800x600/?luxury-condo",
+          "https://source.unsplash.com/800x600/?ocean-view",
+          "https://source.unsplash.com/800x600/?beach-house"
         ]
       },
       {
-        title: "Rustic Cabin in the Woods",
-        description: "A cozy 1-bedroom cabin surrounded by nature.",
+        title: "Cabana Rústica na Floresta",
+        description: "Uma cabana acolhedora com 1 quarto, rodeada pela natureza.",
         price: 150000,
-        location: "Denver, CO",
+        location: "Serra da Estrela, Portugal",
         type: "buy",
         bedrooms: 1,
         bathrooms: 1,
         images: [
-          "file:///C:/Users/Benjamin%20Keter/Downloads/house-1836070_1280.jpg",
-          "file:///C:/Users/Benjamin%20Keter/Downloads/house-6115719_1280.jpg",
-           "file:///C:/Users/Benjamin%20Keter/Downloads/house-6597406_1280.jpg" 
+          "https://source.unsplash.com/800x600/?cabin",
+          "https://source.unsplash.com/800x600/?forest",
+          "https://source.unsplash.com/800x600/?mountain"
         ]
       }
     ];
 
-    // Function to display properties
+    // Função para exibir imóveis
     function displayProperties(filteredProperties = properties) {
       const propertyList = document.getElementById('propertyList');
-      propertyList.innerHTML = ''; // Clear existing content
+      propertyList.innerHTML = ''; // Limpar conteúdo existente
 
       filteredProperties.forEach((property, index) => {
         const propertyCard = document.createElement('div');
         propertyCard.className = 'property-card';
         propertyCard.onclick = () => openModal(property);
 
-        // Image Toggle
+        // Alternar entre Imagens
         let currentImageIndex = 0;
         const imageContainer = document.createElement('div');
         imageContainer.className = 'image-container';
@@ -588,7 +590,7 @@
         prevButton.className = 'prev';
         prevButton.textContent = '◀';
         prevButton.onclick = (e) => {
-          e.stopPropagation(); // Prevent the modal from opening
+          e.stopPropagation(); // Impedir que o modal abra
           currentImageIndex = (currentImageIndex - 1 + property.images.length) % property.images.length;
           propertyImage.src = property.images[currentImageIndex];
         };
@@ -597,7 +599,7 @@
         nextButton.className = 'next';
         nextButton.textContent = '▶';
         nextButton.onclick = (e) => {
-          e.stopPropagation(); // Prevent the modal from opening
+          e.stopPropagation(); // Impedir que o modal abra
           currentImageIndex = (currentImageIndex + 1) % property.images.length;
           propertyImage.src = property.images[currentImageIndex];
         };
@@ -605,14 +607,14 @@
         imageContainer.appendChild(prevButton);
         imageContainer.appendChild(nextButton);
 
-        // Property Details (without description)
+        // Detalhes do Imóvel (sem descrição)
         const details = document.createElement('div');
         details.className = 'details';
         details.innerHTML = `
           <h3>${property.title}</h3>
-          <p class="price">$${property.price.toLocaleString()}</p>
-          <p>Location: ${property.location}</p>
-          <p class="type">${property.type === 'rent' ? 'For Rent' : 'For Buy'}</p>
+          <p class="price">€${property.price.toLocaleString()}</p>
+          <p>Localização: ${property.location}</p>
+          <p class="type">${property.type === 'rent' ? 'Para Alugar' : 'Para Comprar'}</p>
         `;
 
         propertyCard.appendChild(imageContainer);
@@ -621,14 +623,17 @@
       });
     }
 
-    // Function to search and filter properties
+    // Função para pesquisar e filtrar imóveis
     function searchProperties() {
       const searchTerm = document.getElementById('searchInput').value.toLowerCase();
       const typeFilter = document.getElementById('typeFilter').value;
 
       const filteredProperties = properties.filter(property => {
         const matchesSearch = property.location.toLowerCase().includes(searchTerm) ||
-          property.price.toString().includes(searchTerm);
+          property.price.toString().includes(searchTerm) ||
+          property.title.toLowerCase().includes(searchTerm) ||
+          property.bedrooms.toString().includes(searchTerm) ||
+          property.bathrooms.toString().includes(searchTerm);
         const matchesType = typeFilter === 'all' || property.type === typeFilter;
         return matchesSearch && matchesType;
       });
@@ -636,7 +641,7 @@
       displayProperties(filteredProperties);
     }
 
-    // Modal Functions
+    // Funções do Modal
     let currentModalProperty = null;
     let currentModalImageIndex = 0;
 
@@ -656,11 +661,11 @@
 
       modalTitle.textContent = property.title;
       modalDescription.textContent = property.description;
-      modalPrice.textContent = `Price: $${property.price.toLocaleString()}`;
-      modalLocation.textContent = `Location: ${property.location}`;
-      modalType.textContent = `Type: ${property.type === 'rent' ? 'For Rent' : 'For Buy'}`;
-      modalBedrooms.textContent = `Bedrooms: ${property.bedrooms}`;
-      modalBathrooms.textContent = `Bathrooms: ${property.bathrooms}`;
+      modalPrice.textContent = `Preço: €${property.price.toLocaleString()}`;
+      modalLocation.textContent = `Localização: ${property.location}`;
+      modalType.textContent = `Tipo: ${property.type === 'rent' ? 'Para Alugar' : 'Para Comprar'}`;
+      modalBedrooms.textContent = `Quartos: ${property.bedrooms}`;
+      modalBathrooms.textContent = `Casas de Banho: ${property.bathrooms}`;
       modalImage.src = property.images[currentModalImageIndex];
 
       modal.style.display = 'flex';
@@ -676,7 +681,7 @@
       modal.style.display = 'none';
     }
 
-    // Initial state: Display properties
+    // Estado Inicial: Exibir imóveis
     displayProperties();
   </script>
 </body>
