@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Reviews - Home Sweet Home</title>
+  <title>Avaliações de Clientes - Home Sweet Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* General Styles */
+    /* Estilos Gerais */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -14,10 +14,6 @@
       background-color: #f8f9fa;
       color: #333;
       line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
     }
 
     h1, h2, h3 {
@@ -39,7 +35,7 @@
       text-decoration: underline;
     }
 
-    /* Navigation Bar */
+    /* Barra de Navegação Fixa */
     .navbar {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       padding: 10px 20px;
@@ -48,6 +44,10 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed; /* Make the navbar fixed */
+      top: 0; /* Position it at the top */
+      left: 0; /* Align to the left */
+      z-index: 1000; /* Ensure it stays above other content */
     }
 
     .navbar h1 {
@@ -71,7 +71,7 @@
     .navbar ul li a {
       color: white;
       font-weight: 600;
-      padding: 8px 12px;
+      padding: 8px 40px;
       border-radius: 8px;
       transition: background 0.3s ease;
     }
@@ -80,35 +80,36 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* Header */
+    /* Cabeçalho */
     header {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       color: #fff;
-      padding: 20px;
+      padding: 40px 20px; /* Increased padding to make the header larger */
       text-align: center;
       width: 100%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 50px; /* Adjust margin to account for fixed navbar */
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem; /* Increased font size for the header */
     }
 
-    /* Main Content */
+    /* Conteúdo Principal */
     .container {
       max-width: 600px;
-      width: 90%; /* Adjusted to 90% for better responsiveness */
-      margin: 20px auto; /* Center the container horizontally */
+      width: 90%;
+      margin: 20px auto;
       padding: 20px;
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       animation: fadeIn 0.5s ease-in-out;
-      text-align: center; /* Center the text inside the container */
+      text-align: center;
     }
 
-    /* Review Form (Compact and Centered) */
+    /* Formulário de Avaliação */
     .review-form {
       margin-bottom: 20px;
     }
@@ -133,8 +134,8 @@
     }
 
     .review-form textarea {
-      height: 60px; /* Smaller writing box */
-      resize: vertical; /* Allow vertical resizing */
+      height: 60px;
+      resize: vertical;
     }
 
     .review-form input:focus,
@@ -163,7 +164,7 @@
       transform: translateY(-2px);
     }
 
-    /* Review Cards (Compact and Centered) */
+    /* Cartões de Avaliação */
     .review-list {
       display: flex;
       flex-direction: column;
@@ -202,7 +203,7 @@
       font-size: 1rem;
     }
 
-    /* Footer */
+    /* Rodapé */
     footer {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       color: #fff;
@@ -227,13 +228,13 @@
       text-decoration: underline;
     }
 
-    /* Animations */
+    /* Animações */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Media Queries for Responsiveness */
+    /* Consultas de Mídia para Responsividade */
     @media (max-width: 600px) {
       .navbar h1 {
         font-size: 1.25rem;
@@ -249,7 +250,7 @@
       }
 
       header h1 {
-        font-size: 1.75rem;
+        font-size: 2rem; /* Adjusted font size for smaller screens */
       }
 
       .review-form h2 {
@@ -277,118 +278,119 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Barra de Navegação Fixa -->
   <div class="navbar">
     <h1>Home Sweet Home</h1>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="avaliacoes.html">Avaliações</a></li>
     </ul>
   </div>
 
-  <!-- Header -->
+  <!-- Cabeçalho -->
   <header>
-    <h1>Customer Reviews</h1>
+    <h1>Avaliações de Clientes</h1>
   </header>
 
-  <!-- Main Content -->
+  <!-- Conteúdo Principal -->
   <div class="container">
-    <!-- Review Form -->
+    <!-- Formulário de Avaliação -->
     <div class="review-form">
-      <h2>Add Your Review</h2>
+      <h2>Adicione a Sua Avaliação</h2>
       <form id="reviewForm">
-        <input type="text" id="reviewerName" placeholder="Your Name" required>
-        <textarea id="reviewText" placeholder="Write your review..." rows="2" required></textarea>
+        <input type="text" id="reviewerName" placeholder="O Seu Nome" required>
+        <textarea id="reviewText" placeholder="Escreva a sua avaliação..." rows="2" required></textarea>
         <select id="reviewRating" required>
-          <option value="" disabled selected>Select Rating</option>
+          <option value="" disabled selected>Selecione a Classificação</option>
           <option value="5">★★★★★</option>
           <option value="4">★★★★☆</option>
           <option value="3">★★★☆☆</option>
           <option value="2">★★☆☆☆</option>
           <option value="1">★☆☆☆☆</option>
         </select>
-        <button type="submit">Submit Review</button>
+        <button type="submit">Submeter Avaliação</button>
       </form>
     </div>
 
-    <!-- Review List -->
+    <!-- Lista de Avaliações -->
     <div class="review-list" id="reviewList">
-      <!-- Reviews will be dynamically added here -->
+      <!-- As avaliações serão adicionadas dinamicamente aqui -->
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- Rodapé -->
   <footer>
-    <p>&copy; 2023 Home Sweet Home. All rights reserved.</p>
-    <p>Email: <a href="mailto:info@homesweethome.com">info@homesweethome.com</a></p>
-    <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+    <p>Email: <a href="mailto:hshpropriedades@gmail.com">hshpropriedades@gmail.com</a></p>
+    <p>Tlf: <a href="tel:+351281012174">+351 281 012 174</a></p>
+    <p>Tlm: <a href="tel:+351927860439">+351 927 860 439</a></p>
+    <p>Local: <a href="https://www.google.pt/maps/place/R.+%C3%81lvaro+de+Campos+42c,+8800-320+Tavira,+Portugal/@37.1320877,-7.6472447,17z/data=!3m1!4b1!4m6!3m5!1s0xd10037c5d621ee3:0xe66e835ee2cc5607!8m2!3d37.1320877!4d-7.6472447!16s%2Fg%2F11rptgxbww?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">Rua Alvaro de Campos, 42 C, 8800 - 320 Tavira</a></p>
   </footer>
 
   <script>
-  // Array to store reviews
-  let reviews = [];
+    // Array para armazenar avaliações
+    let reviews = [];
 
-  // Function to load reviews from localStorage
-  function loadReviews() {
-    const storedReviews = localStorage.getItem('reviews');
-    if (storedReviews) {
-      reviews = JSON.parse(storedReviews);
+    // Função para carregar avaliações do localStorage
+    function loadReviews() {
+      const storedReviews = localStorage.getItem('reviews');
+      if (storedReviews) {
+        reviews = JSON.parse(storedReviews);
+      }
     }
-  }
 
-  // Function to save reviews to localStorage
-  function saveReviews() {
-    localStorage.setItem('reviews', JSON.stringify(reviews));
-  }
+    // Função para salvar avaliações no localStorage
+    function saveReviews() {
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+    }
 
-  // Function to display reviews
-  function displayReviews() {
-    const reviewList = document.getElementById('reviewList');
-    reviewList.innerHTML = ''; // Clear existing content
+    // Função para exibir avaliações
+    function displayReviews() {
+      const reviewList = document.getElementById('reviewList');
+      reviewList.innerHTML = ''; // Limpar conteúdo existente
 
-    reviews.forEach((review, index) => {
-      const reviewCard = document.createElement('div');
-      reviewCard.className = 'review-card';
-      reviewCard.innerHTML = `
-        <h3>${review.name}</h3>
-        <p class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</p>
-        <p>"${review.text}"</p>
-      `;
-      reviewList.appendChild(reviewCard);
+      reviews.forEach((review, index) => {
+        const reviewCard = document.createElement('div');
+        reviewCard.className = 'review-card';
+        reviewCard.innerHTML = `
+          <h3>${review.name}</h3>
+          <p class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</p>
+          <p>"${review.text}"</p>
+        `;
+        reviewList.appendChild(reviewCard);
+      });
+    }
+
+    // Função para lidar com o envio do formulário
+    document.getElementById('reviewForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Impedir o envio do formulário
+
+      // Obter valores do formulário
+      const name = document.getElementById('reviewerName').value;
+      const text = document.getElementById('reviewText').value;
+      const rating = document.getElementById('reviewRating').value;
+
+      // Adicionar avaliação ao array
+      reviews.push({
+        name: name,
+        text: text,
+        rating: parseInt(rating)
+      });
+
+      // Salvar avaliações no localStorage
+      saveReviews();
+
+      // Limpar o formulário
+      document.getElementById('reviewForm').reset();
+
+      // Exibir as avaliações atualizadas
+      displayReviews();
     });
-  }
 
-  // Function to handle form submission
-  document.getElementById('reviewForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent form from submitting
+    // Carregar avaliações do localStorage quando a página carregar
+    loadReviews();
 
-    // Get form values
-    const name = document.getElementById('reviewerName').value;
-    const text = document.getElementById('reviewText').value;
-    const rating = document.getElementById('reviewRating').value;
-
-    // Add review to the array
-    reviews.push({
-      name: name,
-      text: text,
-      rating: parseInt(rating)
-    });
-
-    // Save reviews to localStorage
-    saveReviews();
-
-    // Clear the form
-    document.getElementById('reviewForm').reset();
-
-    // Display the updated reviews
+    // Exibição inicial das avaliações (se houver)
     displayReviews();
-  });
-
-  // Load reviews from localStorage when the page loads
-  loadReviews();
-
-  // Initial display of reviews (if any)
-  displayReviews();
-</script>
+  </script>
 </body>
 </html>
