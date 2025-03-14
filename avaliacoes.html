@@ -74,10 +74,12 @@
     .navbar ul li a {
       color: white;
       font-weight: 600;
-      padding: 8px 35px; /* Reduced padding for better fit */
+      padding: 8px 15px; /* Reduced padding for better fit */
       border-radius: 8px;
       transition: background 0.3s ease;
       white-space: nowrap; /* Prevent link text from wrapping */
+      position: relative;
+      right: 2rem;
     }
 
     .navbar ul li a:hover {
@@ -240,17 +242,17 @@
     /* Consultas de Mídia para Responsividade */
     @media (max-width: 600px) {
       .navbar {
-        flex-direction: column; /* Stack items vertically on small screens */
+        flex-direction: row; /* Keep items in a row */
         padding: 10px;
       }
 
       .navbar h1 {
         font-size: 1.25rem;
-        margin-bottom: 10px; /* Add space between title and links */
+        margin-bottom: 0; /* Remove space between title and links */
       }
 
       .navbar ul {
-        justify-content: center; /* Center links on small screens */
+        justify-content: flex-end; /* Align links to the right */
         gap: 5px; /* Reduce gap further for small screens */
       }
 
