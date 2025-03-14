@@ -44,16 +44,17 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      position: fixed; /* Make the navbar fixed */
-      top: 0; /* Position it at the top */
-      left: 0; /* Align to the left */
-      z-index: 1000; /* Ensure it stays above other content */
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
     }
 
     .navbar h1 {
       margin: 0;
       font-size: 1.5rem;
       color: white;
+      white-space: nowrap; /* Prevent title from wrapping */
     }
 
     .navbar ul {
@@ -61,7 +62,9 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 15px;
+      gap: 10px; /* Reduced gap for better spacing */
+      flex-wrap: wrap; /* Allow links to wrap on smaller screens */
+      justify-content: flex-end; /* Align links to the right */
     }
 
     .navbar ul li {
@@ -71,9 +74,10 @@
     .navbar ul li a {
       color: white;
       font-weight: 600;
-      padding: 8px 40px;
+      padding: 8px 35px; /* Reduced padding for better fit */
       border-radius: 8px;
       transition: background 0.3s ease;
+      white-space: nowrap; /* Prevent link text from wrapping */
     }
 
     .navbar ul li a:hover {
@@ -84,57 +88,56 @@
     header {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       color: #fff;
-      padding: 40px 20px; /* Increased padding to make the header larger */
+      padding: 100px 20px 60px;
       text-align: center;
       width: 100%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-top: 50px; /* Adjust margin to account for fixed navbar */
+      margin-top: 50px; /* Adjusted for fixed navbar */
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.5rem; /* Increased font size for the header */
+      font-size: 2.5rem;
     }
 
     /* Conteúdo Principal */
     .container {
-      max-width: 600px;
+      max-width: 800px;
       width: 90%;
-      margin: 20px auto;
+      margin: 40px auto;
       padding: 20px;
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       animation: fadeIn 0.5s ease-in-out;
-      text-align: center;
     }
 
     /* Formulário de Avaliação */
     .review-form {
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
 
     .review-form h2 {
       margin-top: 0;
-      color: #2c3e50;
-      font-size: 1.5rem;
+      color: #2c3e50;;
+      font-size: 1.75rem;
       text-align: center;
     }
 
     .review-form input,
     .review-form textarea,
     .review-form select {
-      width: 100%;
-      padding: 8px;
-      margin: 8px 0;
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
       border: 1px solid #ddd;
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: 1rem;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .review-form textarea {
-      height: 60px;
+      height: 100px;
       resize: vertical;
     }
 
@@ -150,12 +153,12 @@
       background: #27ae60;
       color: #fff;
       border: none;
-      padding: 10px 16px;
+      padding: 12px 20px;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 1rem;
       width: 100%;
-      margin: 8px 0;
+      margin: 10px 0;
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
@@ -168,14 +171,14 @@
     .review-list {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
     .review-card {
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 16px;
+      padding: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       animation: fadeIn 0.5s ease-in-out;
     }
@@ -186,21 +189,21 @@
     }
 
     .review-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.1rem;
+      margin: 0 0 10px;
+      font-size: 1.25rem;
       color: #2c3e50;
     }
 
     .review-card p {
       margin: 5px 0;
       color: #666;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .review-card .rating {
       color: #f1c40f;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
     /* Rodapé */
@@ -210,7 +213,7 @@
       text-align: center;
       padding: 20px;
       width: 100%;
-      margin-top: auto;
+      margin-top: 40px;
       box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
     }
 
@@ -236,12 +239,19 @@
 
     /* Consultas de Mídia para Responsividade */
     @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column; /* Stack items vertically on small screens */
+        padding: 10px;
+      }
+
       .navbar h1 {
         font-size: 1.25rem;
+        margin-bottom: 10px; /* Add space between title and links */
       }
 
       .navbar ul {
-        gap: 10px;
+        justify-content: center; /* Center links on small screens */
+        gap: 5px; /* Reduce gap further for small screens */
       }
 
       .navbar ul li a {
@@ -250,29 +260,29 @@
       }
 
       header h1 {
-        font-size: 2rem; /* Adjusted font size for smaller screens */
+        font-size: 2rem;
       }
 
       .review-form h2 {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
       }
 
       .review-form input,
       .review-form textarea,
       .review-form select {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
       }
 
       .review-form button {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
       }
 
       .review-card h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
 
       .review-card p {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -299,7 +309,7 @@
       <h2>Adicione a Sua Avaliação</h2>
       <form id="reviewForm">
         <input type="text" id="reviewerName" placeholder="O Seu Nome" required>
-        <textarea id="reviewText" placeholder="Escreva a sua avaliação..." rows="2" required></textarea>
+        <textarea id="reviewText" placeholder="Escreva a sua avaliação..." rows="4" required></textarea>
         <select id="reviewRating" required>
           <option value="" disabled selected>Selecione a Classificação</option>
           <option value="5">★★★★★</option>
