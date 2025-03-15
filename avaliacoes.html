@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avaliações de Clientes - Home Sweet Home</title>
+  <title>Home Sweet Home - Avaliações</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     /* Estilos Gerais */
@@ -35,26 +35,20 @@
       text-decoration: underline;
     }
 
-    /* Barra de Navegação Fixa */
+    /* Barra de Navegação */
     .navbar {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       padding: 10px 20px;
-      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
     }
 
     .navbar h1 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: white;
-      white-space: nowrap; /* Prevent title from wrapping */
     }
 
     .navbar ul {
@@ -62,9 +56,7 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 10px; /* Reduced gap for better spacing */
-      flex-wrap: wrap; /* Allow links to wrap on smaller screens */
-      justify-content: flex-end; /* Align links to the right */
+      gap: 20px;
     }
 
     .navbar ul li {
@@ -74,12 +66,9 @@
     .navbar ul li a {
       color: white;
       font-weight: 600;
-      padding: 8px 15px; /* Reduced padding for better fit */
+      padding: 8px 12px;
       border-radius: 8px;
       transition: background 0.3s ease;
-      white-space: nowrap; /* Prevent link text from wrapping */
-      position: relative;
-      right: 2rem;
     }
 
     .navbar ul li a:hover {
@@ -90,57 +79,57 @@
     header {
       background: linear-gradient(135deg, #2c3e50, #34495e);
       color: #fff;
-      padding: 100px 20px 60px;
+      padding: 40px 20px;
       text-align: center;
-      width: 100%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-top: 50px; /* Adjusted for fixed navbar */
     }
 
     header h1 {
       margin: 0;
       font-size: 2.5rem;
+      font-weight: 600;
     }
 
     /* Conteúdo Principal */
     .container {
-      max-width: 800px;
-      width: 90%;
-      margin: 40px auto;
+      max-width: 1200px;
+      margin: 20px auto;
       padding: 20px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 0.5s ease-in-out;
     }
 
     /* Formulário de Avaliação */
     .review-form {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
       margin-bottom: 40px;
+      animation: fadeIn 1s ease-in-out;
     }
 
     .review-form h2 {
-      margin-top: 0;
-      color: #2c3e50;;
-      font-size: 1.75rem;
-      text-align: center;
+      margin: 0 0 20px;
+      font-size: 1.8rem;
+      color: #2c3e50;
+    }
+
+    .review-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #2c3e50;
     }
 
     .review-form input,
     .review-form textarea,
     .review-form select {
-      width: 90%;
+      width: 100%;
       padding: 12px;
-      margin: 10px 0;
       border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 1rem;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .review-form textarea {
-      height: 100px;
-      resize: vertical;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
     }
 
     .review-form input:focus,
@@ -159,21 +148,20 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 1rem;
-      width: 100%;
-      margin: 10px 0;
-      transition: background 0.3s ease, transform 0.2s ease;
+      font-weight: 600;
+      transition: background 0.3s ease;
     }
 
     .review-form button:hover {
       background: #2ecc71;
-      transform: translateY(-2px);
     }
 
-    /* Cartões de Avaliação */
+    /* Avaliações */
     .review-list {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
+      animation: fadeIn 1s ease-in-out;
     }
 
     .review-card {
@@ -182,7 +170,6 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 0.5s ease-in-out;
     }
 
     .review-card:hover {
@@ -192,20 +179,18 @@
 
     .review-card h3 {
       margin: 0 0 10px;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       color: #2c3e50;
     }
 
     .review-card p {
       margin: 5px 0;
       color: #666;
-      font-size: 1rem;
     }
 
     .review-card .rating {
-      color: #f1c40f;
+      color: #f39c12;
       font-weight: bold;
-      font-size: 1.1rem;
     }
 
     /* Rodapé */
@@ -214,7 +199,6 @@
       color: #fff;
       text-align: center;
       padding: 20px;
-      width: 100%;
       margin-top: 40px;
       box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -235,62 +219,20 @@
 
     /* Animações */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* Consultas de Mídia para Responsividade */
-    @media (max-width: 600px) {
-      .navbar {
-        flex-direction: row; /* Keep items in a row */
-        padding: 10px;
-      }
-
-      .navbar h1 {
-        font-size: 1.25rem;
-        margin-bottom: 0; /* Remove space between title and links */
-      }
-
-      .navbar ul {
-        justify-content: flex-end; /* Align links to the right */
-        gap: 5px; /* Reduce gap further for small screens */
-      }
-
-      .navbar ul li a {
-        padding: 6px 10px;
-        font-size: 0.9rem;
-      }
-
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .review-form h2 {
-        font-size: 1.5rem;
-      }
-
-      .review-form input,
-      .review-form textarea,
-      .review-form select {
-        font-size: 0.9rem;
-      }
-
-      .review-form button {
-        font-size: 0.9rem;
-      }
-
-      .review-card h3 {
-        font-size: 1.1rem;
-      }
-
-      .review-card p {
-        font-size: 0.9rem;
+    @media (min-width: 768px) {
+      .review-list {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       }
     }
   </style>
 </head>
 <body>
-  <!-- Barra de Navegação Fixa -->
+  <!-- Barra de Navegação -->
   <div class="navbar">
     <h1>Home Sweet Home</h1>
     <ul>
@@ -299,110 +241,89 @@
     </ul>
   </div>
 
-  <!-- Cabeçalho -->
-  <header>
-    <h1>Avaliações de Clientes</h1>
-  </header>
+  <!-- Página Principal -->
+  <div class="main-page" id="mainPage">
+    <header>
+      <h1>Avaliações dos Nossos Clientes</h1>
+    </header>
 
-  <!-- Conteúdo Principal -->
-  <div class="container">
-    <!-- Formulário de Avaliação -->
-    <div class="review-form">
-      <h2>Adicione a Sua Avaliação</h2>
-      <form id="reviewForm">
-        <input type="text" id="reviewerName" placeholder="O Seu Nome" required>
-        <textarea id="reviewText" placeholder="Escreva a sua avaliação..." rows="4" required></textarea>
-        <select id="reviewRating" required>
-          <option value="" disabled selected>Selecione a Classificação</option>
-          <option value="5">★★★★★</option>
-          <option value="4">★★★★☆</option>
-          <option value="3">★★★☆☆</option>
-          <option value="2">★★☆☆☆</option>
-          <option value="1">★☆☆☆☆</option>
-        </select>
-        <button type="submit">Submeter Avaliação</button>
-      </form>
+    <div class="container">
+      <!-- Formulário de Avaliação -->
+      <div class="review-form">
+        <h2>Deixe a Sua Avaliação</h2>
+        <form id="reviewForm">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="rating">Avaliação:</label>
+          <select id="rating" name="rating" required>
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+          </select>
+
+          <label for="comment">Comentário:</label>
+          <textarea id="comment" name="comment" rows="4" required></textarea>
+
+          <button type="submit">Enviar Avaliação</button>
+        </form>
+      </div>
+
+      <!-- Listagens de Avaliações -->
+      <div class="review-list" id="reviewList">
+        <div class="review-card">
+          <h3>João Silva</h3>
+          <p class="rating">★★★★★</p>
+          <p>"Encontrei a casa dos meus sonhos com a Home Sweet Home. O processo foi simples e eficiente. Recomendo!"</p>
+        </div>
+        <div class="review-card">
+          <h3>Maria Santos</h3>
+          <p class="rating">★★★★☆</p>
+          <p>"Excelente atendimento e boas opções de imóveis. Só não dei 5 estrelas porque o processo demorou um pouco mais do que o esperado."</p>
+        </div>
+        <div class="review-card">
+          <h3>Carlos Oliveira</h3>
+          <p class="rating">★★★★★</p>
+          <p>"A equipe foi muito profissional e ajudou-me a encontrar o apartamento perfeito. Muito obrigado!"</p>
+        </div>
+        <div class="review-card">
+          <h3>Ana Costa</h3>
+          <p class="rating">★★★★★</p>
+          <p>"Adorei a experiência com a Home Sweet Home. Eles realmente se preocupam com as necessidades dos clientes."</p>
+        </div>
+        <div class="review-card">
+          <h3>Pedro Almeida</h3>
+          <p class="rating">★★★★☆</p>
+          <p>"Bom serviço, mas gostaria de ver mais opções de imóveis na minha área."</p>
+        </div>
+        <div class="review-card">
+          <h3>Sofia Martins</h3>
+          <p class="rating">★★★★★</p>
+          <p>"Recomendo a Home Sweet Home a todos que procuram um imóvel. Foi uma experiência incrível!"</p>
+        </div>
+      </div>
     </div>
 
-    <!-- Lista de Avaliações -->
-    <div class="review-list" id="reviewList">
-      <!-- As avaliações serão adicionadas dinamicamente aqui -->
-    </div>
+    <!-- Rodapé -->
+    <footer>
+      <p>&copy; 2023 Home Sweet Home. Todos os direitos reservados.</p>
+      <p>Email: <a href="mailto:hshpropriedades@gmail.com">hshpropriedades@gmail.com</a></p>
+      <p>Tlf: <a href="tel:+351281012174">+351 281 012 174</a></p>
+      <p>Tlm: <a href="tel:+351927860439">+351 927 860 439</a></p>
+      <p>Local: <a href="https://www.google.pt/maps/place/R.+%C3%81lvaro+de+Campos+42c,+8800-320+Tavira,+Portugal/@37.1320877,-7.6472447,17z/data=!3m1!4b1!4m6!3m5!1s0xd10037c5d621ee3:0xe66e835ee2cc5607!8m2!3d37.1320877!4d-7.6472447!16s%2Fg%2F11rptgxbww?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">Rua Alvaro de Campos, 42 C, 8800 - 320 Tavira</a></p>
+    </footer>
   </div>
 
-  <!-- Rodapé -->
-  <footer>
-    <p>Email: <a href="mailto:hshpropriedades@gmail.com">hshpropriedades@gmail.com</a></p>
-    <p>Tlf: <a href="tel:+351281012174">+351 281 012 174</a></p>
-    <p>Tlm: <a href="tel:+351927860439">+351 927 860 439</a></p>
-    <p>Local: <a href="https://www.google.pt/maps/place/R.+%C3%81lvaro+de+Campos+42c,+8800-320+Tavira,+Portugal/@37.1320877,-7.6472447,17z/data=!3m1!4b1!4m6!3m5!1s0xd10037c5d621ee3:0xe66e835ee2cc5607!8m2!3d37.1320877!4d-7.6472447!16s%2Fg%2F11rptgxbww?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">Rua Alvaro de Campos, 42 C, 8800 - 320 Tavira</a></p>
-  </footer>
-
   <script>
-    // Array para armazenar avaliações
-    let reviews = [];
-
-    // Função para carregar avaliações do localStorage
-    function loadReviews() {
-      const storedReviews = localStorage.getItem('reviews');
-      if (storedReviews) {
-        reviews = JSON.parse(storedReviews);
-      }
-    }
-
-    // Função para salvar avaliações no localStorage
-    function saveReviews() {
-      localStorage.setItem('reviews', JSON.stringify(reviews));
-    }
-
-    // Função para exibir avaliações
-    function displayReviews() {
-      const reviewList = document.getElementById('reviewList');
-      reviewList.innerHTML = ''; // Limpar conteúdo existente
-
-      reviews.forEach((review, index) => {
-        const reviewCard = document.createElement('div');
-        reviewCard.className = 'review-card';
-        reviewCard.innerHTML = `
-          <h3>${review.name}</h3>
-          <p class="rating">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</p>
-          <p>"${review.text}"</p>
-        `;
-        reviewList.appendChild(reviewCard);
-      });
-    }
-
-    // Função para lidar com o envio do formulário
+    // Função para redirecionar para o Google Reviews após o envio do formulário
     document.getElementById('reviewForm').addEventListener('submit', function (event) {
-      event.preventDefault(); // Impedir o envio do formulário
+      event.preventDefault(); // Impede o envio padrão do formulário
 
-      // Obter valores do formulário
-      const name = document.getElementById('reviewerName').value;
-      const text = document.getElementById('reviewText').value;
-      const rating = document.getElementById('reviewRating').value;
-
-      // Adicionar avaliação ao array
-      reviews.push({
-        name: name,
-        text: text,
-        rating: parseInt(rating)
-      });
-
-      // Salvar avaliações no localStorage
-      saveReviews();
-
-      // Limpar o formulário
-      document.getElementById('reviewForm').reset();
-
-      // Exibir as avaliações atualizadas
-      displayReviews();
+      // Redireciona para o Google Reviews
+      window.location.href = "https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID";
     });
-
-    // Carregar avaliações do localStorage quando a página carregar
-    loadReviews();
-
-    // Exibição inicial das avaliações (se houver)
-    displayReviews();
   </script>
 </body>
 </html>
