@@ -153,6 +153,7 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       animation: fadeIn 1s ease-in-out;
+      justify-items: center; /* Center the cards horizontally */
     }
 
     .property-card {
@@ -162,6 +163,8 @@
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      max-width: 300px; /* Set a maximum width for the cards */
+      width: 100%; /* Ensure the card takes up the full width within the max-width constraint */
     }
 
     .property-card:hover {
@@ -419,24 +422,112 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* Consultas de Mídia para Responsividade */
-    @media (min-width: 600px) {
-      .filters {
-        flex-direction: row;
-        justify-content: center;
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar h1 {
+        font-size: 1.5rem;
+      }
+
+      .navbar ul li a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
       }
 
       .filters input,
       .filters select,
       .filters button {
-        width: auto;
-        max-width: 200px;
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+
+      .property-card h3 {
+        font-size: 1.2rem;
+      }
+
+      .property-card p {
+        font-size: 0.9rem;
+      }
+
+      .property-card .price {
+        font-size: 1rem;
+      }
+
+      .modal-content {
+        padding: 15px;
+      }
+
+      .modal-details h2 {
+        font-size: 1.5rem;
+      }
+
+      .modal-details p {
+        font-size: 0.9rem;
+      }
+
+      .modal-details .price {
+        font-size: 1.2rem;
+      }
+
+      footer p {
+        font-size: 0.9rem;
       }
     }
 
-    @media (min-width: 768px) {
-      .property-list {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    @media (max-width: 480px) {
+      .navbar h1 {
+        font-size: 1.2rem;
+      }
+
+      .navbar ul li a {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .filters input,
+      .filters select,
+      .filters button {
+        font-size: 0.8rem;
+        padding: 8px;
+      }
+
+      .property-card h3 {
+        font-size: 1rem;
+      }
+
+      .property-card p {
+        font-size: 0.8rem;
+      }
+
+      .property-card .price {
+        font-size: 0.9rem;
+      }
+
+      .modal-content {
+        padding: 10px;
+      }
+
+      .modal-details h2 {
+        font-size: 1.2rem;
+      }
+
+      .modal-details p {
+        font-size: 0.8rem;
+      }
+
+      .modal-details .price {
+        font-size: 1rem;
+      }
+
+      footer p {
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -479,8 +570,7 @@
       <p>Email: <a href="mailto:hshpropriedades@gmail.com">hshpropriedades@gmail.com</a></p>
       <p>Tlf: <a href="tel:+351281012174">+351 281 012 174</a></p>
       <p>Tlm: <a href="tel:+351927860439">+351 927 860 439</a></p>
-      <p>Local: <a href="https://www.google.pt/maps/place/R.+%C3%81lvaro+de+Campos+42c,+8800-320+Tavira,+Portugal/@37.1320877,-7.6472447,17z/data=!3m1!4b1!4m6!3m5!1s0xd10037c5d621ee3:0xe66e835ee2cc5607!8m2!3d37.1320877!4d-7.6472447!16s%2Fg%2F11rptgxbww?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">Rua Alvaro de Campos, 42 C, 8800 - 320 Tavira</a></p>
-
+      <p>Local: <a href="https://www.google.pt/maps/place/R.+%C3%81lvaro+de+Campos+42c,+8800-320+Tavira,+Portugal/@37.1320877,-7.6472447,17z/data=!3m1!4b1!4m6!3m5!1s0xd10037c5d621ee3:0xe66e835ee2cc5607!8m2!3d37.1320877!4d-7.6472447!16s%2Fg%2F11rptgxbww?entry=ttu&g_ep=EgoyMDI1MDMxMi.0IKXMDSoASAFQAw%3D%3D">Rua Alvaro de Campos, 42 C, 8800 - 320 Tavira</a></p>
     </footer>
   </div>
 
