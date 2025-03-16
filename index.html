@@ -150,10 +150,9 @@
     /* Listagens de Imóveis */
     .property-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Increase min width to 300px */
       gap: 20px;
       animation: fadeIn 1s ease-in-out;
-      justify-items: center; /* Center the cards horizontally */
     }
 
     .property-card {
@@ -163,8 +162,7 @@
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
-      max-width: 300px; /* Set a maximum width for the cards */
-      width: 100%; /* Ensure the card takes up the full width within the max-width constraint */
+      width: 100%; /* Ensure the card takes up the full width of its grid cell */
     }
 
     .property-card:hover {
